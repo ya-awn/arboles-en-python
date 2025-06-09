@@ -117,4 +117,5 @@ if __name__ == "__main__":
     #Mostramos los nodo hoja
     print("Nodos hoja:", end=' ')
     mostrar_hojas(arbol)
+    
     print()
