@@ -47,6 +47,35 @@ def imprimir_arbol(nodo, nivel=0):
         print('   ' * nivel + str(nodo[0]))
         imprimir_arbol(nodo[1], nivel + 1)
 
+#Esta funcion busca un valor en el arbol
+def buscar_valor(nodo, valor):
+    if not nodo:
+        return False
+    if nodo[0] == valor:
+        return True
+    return buscar_valor(nodo[1], valor) or buscar_valor(nodo[2], valor)
+
+#Esta funcion busca calcular la altura del arbol
+def altura(nodo):
+    if not nodo:
+        return 0
+    return 1 + max(altura(nodo[1]), altura(nodo[2]))
+
+#Esta funcion cuenta la cantidad total de nodos
+def contar_nodos(nodo):
+    if not nodo:
+        return 0
+    return 1 + contar_nodos(nodo[1]) + contar_nodos(nodo[2])
+
+#Esta funcion cuenta solo los nodos hoja
+def mostrar_hojas(nodo):
+    if nodo:
+        if not nodo[1] and not nodo[2]:
+            print(nodo[0], end=' ')
+        mostrar_hojas(nodo[1])
+        mostrar_hojas(nodo[2])
+
+
 # Parte principal del programa: aca armamos el arbol y probamos las funciones
 if __name__ == "__main__":
     # Creamos el nodo raiz con valor 'A'
@@ -75,3 +104,17 @@ if __name__ == "__main__":
     # Mostramos el arbol rotado
     print("\n\nVisualizacion del arbol rotado:")
     imprimir_arbol(arbol)
+
+    #Mostramos la altura
+    print("\n\nAltura del árbol:", altura(arbol))
+
+    #Mostramos el total de nodos
+    print("Cantidad total de nodos:", contar_nodos(arbol))   
+
+    #Mostramos la busqueda de un nodo
+    print("¿Existe el nodo 'E'?:", buscar_valor(arbol, 'E'))
+
+    #Mostramos los nodo hoja
+    print("Nodos hoja:", end=' ')
+    mostrar_hojas(arbol)
+    print()
