@@ -40,7 +40,6 @@ def recorrido_postorden(nodo):
         print(nodo[0], end=' ')
 
 # Esta funcion muestra el arbol rotado 90 grados hacia la izquierda
-# El lado derecho del arbol aparece arriba, el izquierdo abajo
 def imprimir_arbol(nodo, nivel=0):
     if nodo:
         imprimir_arbol(nodo[2], nivel + 1)
@@ -76,7 +75,7 @@ def mostrar_hojas(nodo):
         mostrar_hojas(nodo[2])
 
 
-# Parte principal del programa: aca armamos el arbol y probamos las funciones
+# aca armamos el arbol y probamos las funciones
 if __name__ == "__main__":
     # Creamos el nodo raiz con valor 'A'
     arbol = crear_arbol('A')
@@ -117,5 +116,5 @@ if __name__ == "__main__":
     #Mostramos los nodo hoja
     print("Nodos hoja:", end=' ')
     mostrar_hojas(arbol)
-    
+
     print()
