@@ -15,6 +15,8 @@ insertar_izquierda(nodo, valor)
 
 insertar_derecha(nodo, valor)
 
+eliminar_nodo(arbol, valor)
+
 recorrido_preorden(nodo)
 
 recorrido_inorden(nodo)
@@ -31,5 +33,6 @@ buscar_valor(nodo, valor) → busca un valor dentro del árbol
 
 mostrar_hojas(nodo) → imprime los nodos hoja
 
-## Autor
+## Autores
 Kenyi Meza – mezakenyi@gmail.com
+Roberto Méndez - robermen02@gmail.com
