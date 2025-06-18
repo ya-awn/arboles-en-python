@@ -163,5 +163,39 @@ if __name__ == "__main__":
     print("\n\nEliminando 'B':")
     arbol = eliminar_nodo(arbol, 'B')
     imprimir_arbol(arbol)
+    
+    
+    # Caso práctico: Chat de diagnostico simple.
+    print("\n\n---- ÁRBOL DE DIAGNÓSTICO ----")
+
+    # Creamos el nodo raíz con la primera pregunta
+    diagnostico = crear_arbol("¿Tenés fiebre?")
+
+    # Rama izquierda = sí
+    insertar_izquierda(diagnostico, "¿Tenés dolor muscular?")
+    insertar_izquierda(diagnostico[1], "Parece una gripe")
+    insertar_derecha(diagnostico[1], "Parece un resfrío")
+
+    # Rama derecha = no
+    insertar_derecha(diagnostico, "¿Tenés congestión nasal?")
+    insertar_izquierda(diagnostico[2], "Parece un resfrío")
+    insertar_derecha(diagnostico[2], "Estás bien")
+    
+    # Ejecutamos el "chat" de diagnostico
+    def diagnosticar(nodo):
+        while nodo:
+            pregunta = nodo[0]
+            if not nodo[1] and not nodo[2]: # Cuando el nodo/rama es un hoja:
+                # Mostramos el diagnostico final
+                print("Diagnóstico:", pregunta)
+                return
+            respuesta = input(f"{pregunta} (sí/no): ").strip().lower()
+            # Evaluamos respuesta del usuario con una validacion basica
+            if respuesta in ["sí", "si"]:
+                nodo = nodo[1]
+            else:
+                nodo = nodo[2]
+                
+    diagnosticar(diagnostico)
 
     print()
