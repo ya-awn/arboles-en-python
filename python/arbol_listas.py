@@ -17,7 +17,50 @@ def insertar_derecha(nodo, valor):
         nodo[2] = [valor, [], nodo[2]]
     else:
         nodo[2] = [valor, [], []]
+    
+# Esta funcion elimina un nodo (referenciado por su valor[clave]) dentro de un arbol especifico
+# Maneja tres casos: 
+# 1 - Nodo es hoja: Se devuelve una lista vacia.
+# 2 - Nodo tiene hijo izq: El nodo a eliminar se reemplaza por su hijo/rama izquierdo.
+# 3 - Nodo tiene hijo der: El nodo a eliminar se reemplaza por su hijo/rama derecho.
+# 4 - Nodo tiene dos hijos: Se reemplaza el nodo padre por su hijo izquierdo y se conecta el hijo 
+#     derecho (ahora huerfano) al hijo mas hacia la derecha del "ex" hijo izquierdo (nuevo padre).
 
+def eliminar_nodo(arbol, valor):
+    if not arbol:
+        return []
+    
+    if arbol[0] == valor:
+        # Caso 1 - "Nodo es hoja"
+        if not arbol[1] and not arbol[2]:
+            return []
+        # Caso 2 - "Nodo tiene hijo izquierdo."
+        elif arbol[1] and not arbol[2]:
+            return arbol[1]
+        # Caso 3 - "Nodo tiene hijo derecho."
+        elif not arbol[1] and arbol[2]:
+            return arbol[2]
+        # Caso 4 - "Nodo tiene dos pibes, caos."
+        else:
+            hijo_izq = arbol[1]
+            hijo_der = arbol[2]
+            
+            # Se reemplaza el nodo padre por su hijo izquierdo *
+            actual = hijo_izq
+            
+            # Se busca al hijo mas hacia la derecha del "ex" hijo izquierdo (nuevo padre). *
+            while actual[2]:
+                actual = actual[2]
+            # Se conecta el hijo derecho al subarbol u hoja mas hacia la derecha encontrada en las lineas anteriores. *
+            actual[2] = hijo_der
+            
+            return hijo_izq
+    
+    # Búsqueda recursiva
+    arbol[1] = eliminar_nodo(arbol[1], valor)
+    arbol[2] = eliminar_nodo(arbol[2], valor)
+    return arbol
+            
 # Recorre el arbol en preorden: primero muestra el nodo, despues va a la izquierda y despues a la derecha
 def recorrido_preorden(nodo):
     if nodo:
@@ -116,5 +159,43 @@ if __name__ == "__main__":
     #Mostramos los nodo hoja
     print("Nodos hoja:", end=' ')
     mostrar_hojas(arbol)
+    
+    print("\n\nEliminando 'B':")
+    arbol = eliminar_nodo(arbol, 'B')
+    imprimir_arbol(arbol)
+    
+    
+    # Caso práctico: Chat de diagnostico simple.
+    print("\n\n---- ÁRBOL DE DIAGNÓSTICO ----")
+
+    # Creamos el nodo raíz con la primera pregunta
+    diagnostico = crear_arbol("¿Tenés fiebre?")
+
+    # Rama izquierda = sí
+    insertar_izquierda(diagnostico, "¿Tenés dolor muscular?")
+    insertar_izquierda(diagnostico[1], "Parece una gripe")
+    insertar_derecha(diagnostico[1], "Parece un resfrío")
+
+    # Rama derecha = no
+    insertar_derecha(diagnostico, "¿Tenés congestión nasal?")
+    insertar_izquierda(diagnostico[2], "Parece un resfrío")
+    insertar_derecha(diagnostico[2], "Estás bien")
+    
+    # Ejecutamos el "chat" de diagnostico
+    def diagnosticar(nodo):
+        while nodo:
+            pregunta = nodo[0]
+            if not nodo[1] and not nodo[2]: # Cuando el nodo/rama es un hoja:
+                # Mostramos el diagnostico final
+                print("Diagnóstico:", pregunta)
+                return
+            respuesta = input(f"{pregunta} (sí/no): ").strip().lower()
+            # Evaluamos respuesta del usuario con una validacion basica
+            if respuesta in ["sí", "si"]:
+                nodo = nodo[1]
+            else:
+                nodo = nodo[2]
+                
+    diagnosticar(diagnostico)
 
     print()
