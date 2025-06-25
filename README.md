@@ -54,9 +54,10 @@ Esto permite trabajar sin clases, enfocándonos en la recursividad y la estructu
 
 - `arbol_listas.py`: código fuente con comentarios
 
-- `Trabajo_Integrador_Arboles`.pdf: informe completo del trabajo
+- `Trabajo_Integrador_Arboles.pdf`: informe completo del trabajo
 
-- `video_youtube.txt`: link de video explicativo del proyecto
+- `video_youtube.txt`: link de video explicativo del proyecto 
+   (https://youtu.be/77-jTl_vkk8)
 
 ---
 
