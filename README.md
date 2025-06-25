@@ -16,16 +16,37 @@ Esto permite trabajar sin clases, enfocándonos en la recursividad y la estructu
 ## Funcionalidades implementadas
 
 - `crear_arbol(valor)`  
+  Crea un nuevo nodo raíz con el valor dado y sin hijos.
+
 - `insertar_izquierda(nodo, valor)`  
+  Inserta un nuevo nodo como hijo izquierdo del nodo actual. Si ya había uno, lo desplaza hacia abajo.
+
 - `insertar_derecha(nodo, valor)`  
+  Inserta un nuevo nodo como hijo derecho. Si ya existe, también lo reubica como hijo del nuevo nodo.
+
 - `recorrido_preorden(nodo)`  
+  Muestra los valores del árbol recorriéndolo desde la raíz, luego por la izquierda, y por último por la derecha.
+
 - `recorrido_inorden(nodo)`  
+  Recorre el árbol en el orden: izquierda → nodo actual → derecha. Útil para árboles binarios de búsqueda.
+
 - `recorrido_postorden(nodo)`  
-- `imprimir_arbol(nodo)` → muestra el árbol rotado 90° en consola  
-- `altura(nodo)` → calcula la altura del árbol  
-- `contar_nodos(nodo)` → cuenta la cantidad total de nodos  
-- `buscar_valor(nodo, valor)` → busca un valor en el árbol  
-- `mostrar_hojas(nodo)` → imprime los nodos hoja (sin hijos)
+  Visita primero los subárboles izquierdo y derecho, y al final el nodo actual.
+
+- `imprimir_arbol(nodo)`  
+  Muestra el árbol rotado 90° hacia la izquierda en consola. Ayuda a visualizar jerarquías.
+
+- `altura(nodo)`  
+  Devuelve la altura máxima del árbol, es decir, el número de niveles.
+
+- `contar_nodos(nodo)`  
+  Cuenta cuántos nodos (elementos) tiene todo el árbol.
+
+- `buscar_valor(nodo, valor)`  
+  Busca un valor dentro del árbol y devuelve `True` si lo encuentra.
+
+- `mostrar_hojas(nodo)`  
+  Muestra todos los nodos que no tienen hijos, también llamados hojas.
 
 ---
 
