@@ -6,10 +6,7 @@ Este proyecto implementa un árbol binario en Python utilizando únicamente list
 
 ## Marco teórico (resumen)
 
-Un árbol binario es una estructura jerárquica donde cada nodo puede tener hasta dos hijos: izquierdo y derecho. Se utilizan en algoritmos de búsqueda, bases de datos, inteligencia artificial, sistemas de archivos, entre otros. En este trabajo usamos listas anidadas para construir nodos del tipo:
-
-
-Esto permite trabajar sin clases, enfocándonos en la recursividad y la estructura.
+Un árbol binario es una estructura jerárquica donde cada nodo puede tener hasta dos hijos: izquierdo y derecho. Se utilizan en algoritmos de búsqueda, bases de datos, inteligencia artificial, sistemas de archivos, entre otros. En este trabajo usamos listas anidadas, esto permite trabajar sin clases, enfocándonos en la recursividad y la estructura.
 
 ---
 
