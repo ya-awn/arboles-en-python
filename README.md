@@ -54,7 +54,7 @@ Un árbol binario es una estructura jerárquica donde cada nodo puede tener hast
 - `Trabajo_Integrador_Arboles.pdf`: informe completo del trabajo
 
 - `video_youtube.txt`: link de video explicativo del proyecto 
-   (https://youtu.be/77-jTl_vkk8)
+   (https://youtu.be/GT2MUiXzPOo)
 
 ---
 
